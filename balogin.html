@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="bower/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
+  </head>
+  <body class="balogin">
+    <form method="post" action="./php/balogin.php?act=login">
+      <ul class="login">
+        <li class="l_tit">邮箱/用户名/手机号</li>
+        <li class="mb_10">
+          <input class="login_input user_icon" type="text" name="username" placeholder="请输入用户名">
+        </li>
+        <li class="l_tit">密码</li>
+        <li class="mb_10">
+          <input class="login_input user_icon" type="password" name="password">
+        </li>
+        <li class="autoLogin">
+          <input class="checked" id="a1" type="checkbox">
+          <label for="a1">自动登陆</label>
+        </li>
+        <li>
+          <input class="login_btn" type="submit" value="">
+        </li>
+      </ul>
+    </form>
+    <script src="js/jquery.js"></script>
+    <script src="bower/vue/dist/vue.js"></script>
+    <script src="bower/vue-resource/dist/vue-resource.min.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>

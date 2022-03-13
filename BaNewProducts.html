@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="bower/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
+  </head>
+  <body class="Backstage">
+    <div class="top">
+      <div class="logo"><img src="../img/logo02.png"></div>
+      <ul class="list-inline">
+        <li><a href="./php/baAdminAction.php?act=logout"><i class="fa fa-home fa-fw"></i>回首頁</a></li>
+      </ul>
+    </div>
+    <div class="bottom">
+      <div class="left" id="leftNav">
+        <ul class="item">
+          <li><a href="#"><i class="fa fa-file-image-o fa-fw"></i>最新活動</a></li>
+          <li><a href="#"><i class="fa fa-file-image-o fa-fw"></i>主打商品</a></li>
+          <li class="active"><a href="BaNewProducts.html"><i class="fa fa-leaf fa-fw"></i>最新商品
+              <!--span-->
+              <!--    i.fa.fa-chevron-right--></a></li>
+          <li><a href="javascript:leftNav();"><i class="fa fa-chevron-circle-left fa-fw"></i>摺疊選單</a></li>
+        </ul>
+      </div>
+      <div class="right">
+        <div class="BaNewProducts ItemProducts">
+          <div class="bottom">
+            <div class="ProductsNav">
+              <div class="ProductsAdd"><a class="btn" href="javascript:modifyProducts();"><i class="fa fa-pencil-square-o fa-fw"></i>新增商品</a></div>
+              <div class="ProductsSeach">
+                <label>商品查詢:</label>
+                <input class="form-control" id="productSeach" onkeypress="productSeach();">
+              </div>
+            </div>
+            <div class="ProductsContent">
+              <ul class="header">
+                <li>
+                  <div class="ProductsId">
+                    <p>商品順序</p>
+                  </div>
+                  <div class="ProductsTime">
+                    <p>上架時間</p>
+                  </div>
+                  <div class="ProductsImage">
+                    <p>商品圖片</p>
+                  </div>
+                  <div class="ProductsName">
+                    <p>商品名稱</p>
+                  </div>
+                  <div class="ProductsPrice">
+                    <p>商品價格</p>
+                  </div>
+                  <div class="ProductsStatus">
+                    <p>商品狀態</p>
+                  </div>
+                  <div class="ProductsModify">
+                    <p>修改 / 刪除</p>
+                  </div>
+                </li>
+                <li id="notData">
+                  <h2>查無資料</h2>
+                </li>
+              </ul>
+              <ul id="ProductsContent">
+                <li>
+                  <div class="ProductsId">
+                    <p>{order}</p>
+                  </div>
+                  <div class="ProductsTime">
+                    <p>{time}</p>
+                  </div>
+                  <div class="ProductsImage">{Image}</div>
+                  <div class="ProductsName">
+                    <p>{title}</p>
+                  </div>
+                  <div class="ProductsPrice">
+                    <p>{price}</p>
+                  </div>
+                  <div class="ProductsStatus">
+                    <p>{status}</p>
+                  </div>
+                  <div class="ProductsModify"><i class="fa fa-pencil-square-o" data-id="{id}" onclick="modifyProducts(this);"></i><i class="fa fa-trash-o" data-id="{id}" onclick="deleteProducts(this);"></i></div>
+                </li>
+              </ul>
+            </div>
+            <div class="ProductsPage">
+              <ul class="list-inline" id="ProductsPage"></ul>
+              <!--ul.list-inline-->
+              <!--    li-->
+              <!--        a(href="#") 上一頁-->
+              <!--    li-->
+              <!--        a(href="#") 下一頁-->
+              <!--#PageControl(style="display: none;")-->
+              <!--ul.pagination-->
+            </div>
+          </div>
+        </div>
+        <div class="BaNewProducts modifyProducts" id="modifyProducts">
+          <form id="modifyProductsForm">
+            <input id="hidden" type="hidden">
+            <div class="top">
+              <p><span>商品修改</span><i class="fa fa-times" onclick="closeWindow('modifyProducts');"></i></p>
+            </div>
+            <div class="bottom">
+              <div class="row no-gutters">
+                <label class="col-2">商品圖片</label>
+                <input class="col-9" id="modifyCover" type="file" name="Cover" data-validation-engine="validate[required]">
+              </div>
+              <div class="row no-gutters">
+                <label class="col-2">商品順序</label>
+                <input class="col-9 form-control" id="modifyPorder" type="text" name="Porder" data-validation-engine="validate[required],custom[number]">
+              </div>
+              <div class="row no-gutters">
+                <label class="col-2">商品名稱</label>
+                <input class="col-9 form-control" id="modifyPname" type="text" name="Pname" data-validation-engine="validate[required]">
+              </div>
+              <div class="row no-gutters">
+                <label class="col-2">商品價格</label>
+                <input class="col-9 form-control" id="modifyPrice" type="text" name="Price" data-validation-engine="validate[required],custom[number]">
+              </div>
+              <div class="row no-gutters">
+                <label class="col-2">商品狀態</label>
+                <div class="col-9 modifystatus" id="modifystatus">
+                  <label>
+                    <input id="modifystatusY" type="radio" name="Status" value="Y" checked>上架
+                  </label>
+                  <label>
+                    <input id="modifystatusN" type="radio" name="Status" value="N">下架
+                  </label>
+                </div>
+              </div>
+              <div class="row no-gutters">
+                <label class="col-2">商品敘述1</label>
+                <textarea class="col-9 form-control" id="modifyContent" rows="8" name="Content" data-validation-engine="validate[required]"></textarea>
+              </div>
+              <div class="row no-gutters">
+                <div class="col-2"></div>
+                <div class="col-9">
+                  <!--buttom.btn(onclick="modifyProductsOk();")-->
+                  <input class="btn" type="submit" value="送出">
+                  <!--input.btn(type="submit")
+                  //i.fa.fa-pencil-square-o.fa-fw
+                  //| 送出
+                  -->
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="overlaymodal" id="deleteProducts">
+          <form id="deleteProductsForm">
+            <input type="hidden">
+            <div class="top">
+              <!--i.fa.fa-times('@click'='delFlag=false')--><i class="fa fa-times" onclick="closeWindow('deleteProducts');"></i>
+            </div>
+            <div class="middle">
+              <p>你確定刪除此商品?</p>
+            </div>
+            <div class="bottom">
+              <!--button.btn('@click'="delProduct()") Yes-->
+              <!--button.btn('@click'='delFlag=false') No-->
+              <button class="btn" onclick="deleteProductsOk();">Yes</button>
+              <button class="btn" onclick="closeWindow('deleteProducts');">No</button>
+            </div>
+          </form>
+        </div>
+        <div class="overlay" id="overlay" :class="{'modalshow':delFlag}"></div>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="bower/vue/dist/vue.js"></script>
+    <script src="bower/vue-resource/dist/vue-resource.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="bower/jQuery-Validation-Engine-master/js/languages/jquery.validationEngine-zh_TW.js"></script>
+    <script src="bower/jQuery-Validation-Engine-master/js/jquery.validationEngine.js"></script>
+    <script src="js/BaNewProducts.js"></script>
+  </body>
+</html>

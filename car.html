@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="bower/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="contenttop" id="car">
+        <div class="nav">
+          <div class="top logo"><img src="img/logo.jpg" alt=""></div>
+          <div class="bottom">
+            <ul>
+              <li><a href="about.html">關於我們</a></li>
+              <li><a href="color.html">彩色電著</a></li>
+              <li><a href="#">雙色電著</a></li>
+              <li><a href="#">雷射雕刻</a></li>
+              <li><a href="#">五金噴砂</a></li>
+              <li><a href="contact.html">連絡我們</a></li>
+            </ul>
+            <ul class="list-inline">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="header"></div>
+        <div class="content">
+          <div class="carContent" v-if="carContentFlag">
+            <ul class="list-inline">
+              <li>
+                <p>圖片</p>
+              </li>
+              <li>
+                <p>名稱</p>
+              </li>
+              <li>
+                <p>價格</p>
+              </li>
+              <li>
+                <p>數量</p>
+              </li>
+              <li>
+                <p>狀態</p>
+              </li>
+            </ul>
+            <ul class="list-inline" v-for="(item,index) in productList" v-bind:class="{'check':item.checked}" @click="selectedProduct(item)">
+              <li><img v-bind:src="item.productImage"></li>
+              <li>
+                <p v-text="item.productName"></p>
+              </li>
+              <li>
+                <p data-label="價格:">{{item.productPrice | formatMoney('元')}}</p>
+              </li>
+              <li>
+                <p data-label="數量:"><span><i v-on:click="changeMoney(item,1)">+</i>
+                    <input class="input" type="text" v-bind:value="item.productQuentity" v-model="item.productQuentity"><i @click="changeMoney(item,-1)">-</i></span></p>
+                <div class="note" v-text="item.productPrice*item.productQuentity" v-bind:index="index"></div>
+              </li>
+              <li>
+                <p data-label="取消購物:"><i class="fa fa-trash-o" @click="delconfirm(item)"></i></p>
+              </li>
+            </ul>
+            <div class="bottom">
+              <p>商品合計: {{totalMoney}} 元</p>
+              <button>送出</button>
+              <div class="allitem" v-bind:class="{'check':checkedAllFlage}" @click="checkedAll(true)">全選</div>
+              <div class="allitemNot" @click="checkedAll(false)">取消</div>
+            </div>
+          </div>
+          <div class="carContentEmpty" :class="{'hide':carContentFlag}">
+            <h2>目前沒有商品</h2>
+          </div>
+        </div>
+        <div class="overlay" :class="{'modalshow':delFlag}">
+          <div class="overlaymodal">
+            <div class="top"><i class="fa fa-times" @click="delFlag=false"></i></div>
+            <div class="middle">
+              <p>你確定刪除此訂單?</p>
+            </div>
+            <div class="bottom">
+              <button class="btn" @click="delProduct()">Yes</button>
+              <button class="btn" @click="delFlag=false">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="row no-gutters">
+          <div class="left col-md-8">
+            <ul class="list-inline">
+              <li><a href="#">聯絡我們</a></li>
+              <li><a href="#">誠徵夥伴</a></li>
+              <li><a href="#">版權聲明</a></li>
+            </ul>
+          </div>
+          <div class="right col-md-4">
+            <div class="top"><img src="img/logo.jpg" alt=""></div>
+            <div class="bottom"><small>© 2013 by Banmu Tang Environmental Integration Group.All Right Reserved</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/jquery.js"></script>
+  <script src="bower/vue/dist/vue.js"></script>
+  <script src="bower/vue-resource/dist/vue-resource.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/car.js"></script>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="bower/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
+  </head>
+  <body class="Backstage">
+    <div class="top">
+      <div class="logo"><img src="../img/logo02.png"></div>
+      <ul class="list-inline">
+        <li><a href="./php/baAdminAction.php?act=logout"><i class="fa fa-home fa-fw"></i>回首頁</a></li>
+      </ul>
+    </div>
+    <div class="bottom">
+      <div class="left" id="leftNav">
+        <ul class="item">
+          <li><a href="#"><i class="fa fa-file-image-o fa-fw"></i>最新活動</a></li>
+          <li><a href="#"><i class="fa fa-file-image-o fa-fw"></i>主打商品</a></li>
+          <li class="active"><a href="BaNewProducts.html"><i class="fa fa-leaf fa-fw"></i>最新商品
+              <!--span-->
+              <!--    i.fa.fa-chevron-right--></a></li>
+          <li><a href="javascript:leftNav();"><i class="fa fa-chevron-circle-left fa-fw"></i>摺疊選單</a></li>
+        </ul>
+      </div>
+      <div class="right">
+        <div class="BaNewProducts Item">
+          <div class="bottom">
+            <div class="ProductsNav">
+              <div class="ProductsAdd">
+                <buttom class="btn"><i class="fa fa-pencil-square-o fa-fw"></i>新增商品</buttom>
+              </div>
+              <div class="ProductsSeach">
+                <label>商品查詢:</label>
+                <input class="form-control">
+              </div>
+            </div>
+            <div class="ProductsContent">
+              <ul>
+                <li>
+                  <div class="ProductsId">
+                    <p>商品順序</p>
+                  </div>
+                  <div class="ProductsTime">
+                    <p>上架時間</p>
+                  </div>
+                  <div class="ProductsImage">
+                    <p>商品圖片</p>
+                  </div>
+                  <div class="ProductsName">
+                    <p>商品名稱</p>
+                  </div>
+                  <div class="ProductsPrice">
+                    <p>商品價格</p>
+                  </div>
+                  <div class="ProductsStatus">
+                    <p>商品狀態</p>
+                  </div>
+                  <div class="ProductsModify">
+                    <p>修改 / 刪除</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="ProductsId">
+                    <p>1</p>
+                  </div>
+                  <div class="ProductsTime">
+                    <p>2017/03/07</p>
+                  </div>
+                  <div class="ProductsImage"><img class="img-responsive" src="img/p01.jpg"></div>
+                  <div class="ProductsName">
+                    <p>商品名稱</p>
+                  </div>
+                  <div class="ProductsPrice">
+                    <p>$199</p>
+                  </div>
+                  <div class="ProductsStatus">
+                    <p>上架</p>
+                  </div>
+                  <div class="ProductsModify"><i class="fa fa-pencil-square-o"></i><i class="fa fa-trash-o"></i></div>
+                </li>
+                <li>
+                  <div class="ProductsId">
+                    <p>2</p>
+                  </div>
+                  <div class="ProductsTime">
+                    <p>2017/03/07</p>
+                  </div>
+                  <div class="ProductsImage"><img class="img-responsive" src="img/p01.jpg"></div>
+                  <div class="ProductsName">
+                    <p>商品名稱</p>
+                  </div>
+                  <div class="ProductsPrice">
+                    <p>$199</p>
+                  </div>
+                  <div class="ProductsStatus">
+                    <p>上架</p>
+                  </div>
+                  <div class="ProductsModify"><i class="fa fa-pencil-square-o"></i><i class="fa fa-trash-o"></i></div>
+                </li>
+                <li>
+                  <div class="ProductsId">
+                    <p>3</p>
+                  </div>
+                  <div class="ProductsTime">
+                    <p>2017/03/07</p>
+                  </div>
+                  <div class="ProductsImage"><img class="img-responsive" src="img/p01.jpg"></div>
+                  <div class="ProductsName">
+                    <p>商品名稱</p>
+                  </div>
+                  <div class="ProductsPrice">
+                    <p>$199</p>
+                  </div>
+                  <div class="ProductsStatus">
+                    <p>上架</p>
+                  </div>
+                  <div class="ProductsModify"><i class="fa fa-pencil-square-o"></i><i class="fa fa-trash-o"></i></div>
+                </li>
+              </ul>
+            </div>
+            <div class="ProductsPage">
+              <ul class="list-inline">
+                <li><a href="#">上一頁</a></li>
+                <li><a href="#">下一頁</a></li>
+              </ul>
+              <div id="PageControl" style="display: none;"></div>
+              <ul class="pagination"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="BaNewProducts Upload">
+          <div class="top">
+            <p>新增商品<i class="fa fa-times"></i></p>
+          </div>
+          <div class="bottom">
+            <div class="row no-gutters">
+              <label class="col-2">商品圖片</label>
+              <input class="col-9 form-control">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品名稱</label>
+              <input class="col-9 form-control" type="text">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品價格</label>
+              <input class="col-9 form-control" type="text">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品敘述</label>
+              <textarea class="col-9 form-control" rows="8"></textarea>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-2"></div>
+              <div class="col-9">
+                <buttom class="btn"><i class="fa fa-pencil-square-o fa-fw"></i>送出</buttom>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="BaNewProducts modify">
+          <div class="top">
+            <p>商品修改<i class="fa fa-times"></i></p>
+          </div>
+          <div class="bottom">
+            <div class="row no-gutters">
+              <label class="col-2">商品圖片</label>
+              <input class="col-9 form-control">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品順序</label>
+              <input class="col-9 form-control">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品名稱</label>
+              <input class="col-9 form-control" type="text">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品價格</label>
+              <input class="col-9 form-control" type="text">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品狀態</label>
+              <input class="col-9 form-control" type="text">
+            </div>
+            <div class="row no-gutters">
+              <label class="col-2">商品敘述</label>
+              <textarea class="col-9 form-control" rows="8"></textarea>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-2"></div>
+              <div class="col-9">
+                <buttom class="btn"><i class="fa fa-pencil-square-o fa-fw"></i>送出</buttom>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overlaymodal">
+          <div class="top"><i class="fa fa-times" @click="delFlag=false"></i></div>
+          <div class="middle">
+            <p>你確定刪除此商品?</p>
+          </div>
+          <div class="bottom">
+            <button class="btn" @click="delProduct()">Yes</button>
+            <button class="btn" @click="delFlag=false">No</button>
+          </div>
+        </div>
+        <div class="overlay" :class="{'modalshow':delFlag}">
+          <script src="js/jquery.js"></script>
+          <script src="bower/vue/dist/vue.js"></script>
+          <script src="bower/vue-resource/dist/vue-resource.min.js"></script>
+          <script src="js/custom.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/Backstage.js"></script>
+</html>
